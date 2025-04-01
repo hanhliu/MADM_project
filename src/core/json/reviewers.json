@@ -1,0 +1,69 @@
+{
+  "researchers": [
+    {
+      "name": "Nguyen Van A",
+      "field": ["Information Technology"],
+      "degree": "PhD",
+      "conference_topic": "Applications of Artificial Intelligence in Medicine",
+      "average_rating": 9.2,
+      "years_of_experience": 10,
+      "published_papers": 25,
+      "availability": [
+        "2025-05-01 to 2025-05-20",
+        "2025-07-01 to 2025-07-15"
+      ]
+    },
+    {
+      "name": "Tran Thi B",
+      "field": ["Environmental Science"],
+      "degree": "Master’s",
+      "conference_topic": "Climate Change and Sustainable Solutions",
+      "average_rating": 7.8,
+      "years_of_experience": 5,
+      "published_papers": 8,
+      "availability": [
+        "2025-06-01 to 2025-06-30",
+        "2025-08-15 to 2025-09-10"
+      ]
+    },
+    {
+      "name": "Le Van C",
+      "field": ["Physics"],
+      "degree": "PhD",
+      "conference_topic": "Nanomaterials in Energy Technology",
+      "average_rating": 8.9,
+      "years_of_experience": 10,
+      "published_papers": 20,
+      "availability": [
+        "2025-07-01 to 2025-07-25",
+        "2025-09-01 to 2025-09-30"
+      ]
+    },
+    {
+      "name": "Vo Thi K",
+      "field": ["Information Technology", "Data Science"],
+      "degree": "PhD",
+      "conference_topic": "",
+      "average_rating": 8.7,
+      "years_of_experience": 8,
+      "published_papers": 15,
+      "availability": [
+        "2025-06-01 to 2025-06-20",
+        "2025-08-01 to 2025-08-15"
+      ]
+    },
+    {
+      "name": "Bui Van L",
+      "field": ["Economics"],
+      "degree": "Master’s",
+      "conference_topic": "",
+      "average_rating": 7.9,
+      "years_of_experience": 6,
+      "published_papers": 10,
+      "availability": [
+        "2025-07-15 to 2025-08-10",
+        "2025-09-01 to 2025-09-20"
+      ]
+    }
+  ]
+}

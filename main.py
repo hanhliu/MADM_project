@@ -2,6 +2,9 @@ import os
 import sys
 from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QVBoxLayout
 
+from src.ui.home_screen import HomeScreen
+
+
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -11,6 +14,8 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.central_layout = QVBoxLayout()
 
+        home_screen = HomeScreen()
+        self.central_layout.addWidget(home_screen)
         self.central_widget.setLayout(self.central_layout)
         self.setCentralWidget(self.central_widget)
 

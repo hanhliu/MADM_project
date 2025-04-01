@@ -1,0 +1,40 @@
+{
+  "conferences": [
+    {
+      "topic": "Applications of Artificial Intelligence in Medicine",
+      "field": ["Information Technology", "Medicine"],
+      "date": "2025-06-15",
+      "reviewer_degree_requirement": "PhD",
+      "required_reviewer_rating": 8.5,
+      "min_reviewers": 3,
+      "authors": ["Nguyen Van A", "Pham Thi D", "Hoang Van E"]
+    },
+    {
+      "topic": "Climate Change and Sustainable Solutions",
+      "field": ["Environmental Science"],
+      "date": "2025-07-20",
+      "reviewer_degree_requirement": "Master’s or higher",
+      "required_reviewer_rating": 7.0,
+      "min_reviewers": 2,
+      "authors": ["Tran Thi B", "Le Van F"]
+    },
+    {
+      "topic": "Nanomaterials in Energy Technology",
+      "field": ["Physics", "Engineering"],
+      "date": "2025-08-10",
+      "reviewer_degree_requirement": "PhD",
+      "required_reviewer_rating": 9.0,
+      "min_reviewers": 3,
+      "authors": ["Le Van C", "Nguyen Thi G"]
+    },
+    {
+      "topic": "Big Data Analysis in Economics",
+      "field": ["Economics", "Statistics"],
+      "date": "2025-09-05",
+      "reviewer_degree_requirement": "Master’s or higher",
+      "required_reviewer_rating": 7.5,
+      "min_reviewers": 2,
+      "authors": ["Pham Van H", "Tran Thi I"]
+    }
+  ]
+}
