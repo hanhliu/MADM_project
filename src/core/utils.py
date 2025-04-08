@@ -1,3 +1,5 @@
+import numpy as np
+
 
 # Hàm tính Jaccard Similarity
 def jaccard_similarity(set1, set2):
@@ -15,3 +17,18 @@ def jaccard_similarity(set1, set2):
 
     # Tính Jaccard Similarity
     return intersection / union
+
+
+# chuẩn hoá vector
+def normalize_decision_matrix(matrix):
+    matrix = np.array(matrix, dtype=float)
+    column_squares = np.sum(np.square(matrix), axis=0)
+    norm_matrix = matrix / np.sqrt(column_squares)
+    return norm_matrix
+
+def normalize_and_weight_matrix(matrix, weights):
+    matrix = np.array(matrix, dtype=float)
+    norm = np.sqrt(np.sum(matrix ** 2, axis=0))  # chuẩn hóa theo vector
+    normalized_matrix = matrix / norm
+    weighted_matrix = normalized_matrix * weights  # nhân trọng số
+    return weighted_matrix

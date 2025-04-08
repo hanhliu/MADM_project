@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
         self.central_widget.setLayout(self.central_layout)
         self.setCentralWidget(self.central_widget)
 
-        self.setFixedSize(920, 700)
+        self.setMinimumSize(920, 700)
         self.center()
 
     def center(self):
