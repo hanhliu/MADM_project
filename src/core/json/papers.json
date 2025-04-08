@@ -7,7 +7,9 @@
       "reviewer_degree_requirement": "PhD",
       "required_reviewer_rating": 8.5,
       "min_reviewers": 3,
-      "authors": ["Nguyen Van A", "Pham Thi D", "Hoang Van E"]
+      "authors": ["Nguyen Van A", "Pham Thi D", "Hoang Van E"],
+      "numbers_of_published_papers_requirement": 10,
+      "years_of_experience_requirement": 4
     },
     {
       "topic": "Climate Change and Sustainable Solutions",
@@ -16,7 +18,9 @@
       "reviewer_degree_requirement": "Master’s or higher",
       "required_reviewer_rating": 7.0,
       "min_reviewers": 2,
-      "authors": ["Tran Thi B", "Le Van F"]
+      "authors": ["Tran Thi B", "Le Van F"],
+      "numbers_of_published_papers_requirement": 10,
+      "years_of_experience_requirement": 4
     },
     {
       "topic": "Nanomaterials in Energy Technology",
@@ -25,7 +29,9 @@
       "reviewer_degree_requirement": "PhD",
       "required_reviewer_rating": 9.0,
       "min_reviewers": 3,
-      "authors": ["Le Van C", "Nguyen Thi G"]
+      "authors": ["Le Van C", "Nguyen Thi G"],
+      "numbers_of_published_papers_requirement": 10,
+      "years_of_experience_requirement": 4
     },
     {
       "topic": "Big Data Analysis in Economics",
@@ -34,7 +40,9 @@
       "reviewer_degree_requirement": "Master’s or higher",
       "required_reviewer_rating": 7.5,
       "min_reviewers": 2,
-      "authors": ["Pham Van H", "Tran Thi I"]
+      "authors": ["Pham Van H", "Tran Thi I"],
+      "numbers_of_published_papers_requirement": 10,
+      "years_of_experience_requirement": 4
     }
   ]
 }

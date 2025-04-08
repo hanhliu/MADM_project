@@ -64,6 +64,71 @@
         "2025-07-15 to 2025-08-10",
         "2025-09-01 to 2025-09-20"
       ]
+    },
+    {
+        "name": "Nguyen Thi M",
+        "field": ["Information Technology", "Medicine"],
+        "degree": "PhD",
+        "conference_topic": "AI in Healthcare",
+        "average_rating": 9.0,
+        "years_of_experience": 8,
+        "published_papers": 18,
+        "availability": [
+            "2025-06-01 to 2025-06-20",
+            "2025-08-15 to 2025-09-10"
+        ]
+    },
+    {
+        "name": "Tran Van N",
+        "field": ["Physics", "Engineering"],
+        "degree": "PhD",
+        "conference_topic": "Nanotechnology Applications",
+        "average_rating": 9.2,
+        "years_of_experience": 10,
+        "published_papers": 25,
+        "availability": [
+            "2025-07-15 to 2025-08-15",
+            "2025-09-01 to 2025-09-20"
+        ]
+    },
+    {
+        "name": "Le Thi P",
+        "field": ["Environmental Science"],
+        "degree": "Master’s",
+        "conference_topic": "Sustainable Development",
+        "average_rating": 7.8,
+        "years_of_experience": 6,
+        "published_papers": 12,
+        "availability": [
+            "2025-07-10 to 2025-07-25",
+            "2025-09-15 to 2025-10-05"
+        ]
+    },
+    {
+        "name": "Pham Van Q",
+        "field": ["Economics", "Statistics"],
+        "degree": "PhD",
+        "conference_topic": "Econometric Modeling",
+        "average_rating": 8.5,
+        "years_of_experience": 9,
+        "published_papers": 20,
+        "availability": [
+            "2025-08-20 to 2025-09-10",
+            "2025-10-01 to 2025-10-15"
+        ]
+    },
+    {
+        "name": "Hoang Thi R",
+        "field": ["Information Technology", "Statistics"],
+        "degree": "Master’s",
+        "conference_topic": "Data Mining Techniques",
+        "average_rating": 8.0,
+        "years_of_experience": 7,
+        "published_papers": 15,
+        "availability": [
+            "2025-06-10 to 2025-06-30",
+            "2025-09-01 to 2025-09-15"
+        ]
     }
   ]
 }
