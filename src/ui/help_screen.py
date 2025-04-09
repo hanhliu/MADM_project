@@ -296,6 +296,7 @@ class HelpScreen(QWidget):
 
     def calculate_and_update_table(self, data: Paper):
         list_reviewers = self.controller.filter_researchers(data)
+        print(f"HanhLT: list_reviewers = {list_reviewers}")
         decision_matrix = self.controller.calculate_decision_matrix(list_reviewer=list_reviewers, paper=data)
         print(f"HanhLT: result = {decision_matrix}")
         self.decision_table.setRowCount(len(decision_matrix))  # Make sure row count matches number of reviewers
@@ -345,8 +346,8 @@ class HelpScreen(QWidget):
         pass
 
     def resize_table(self, width):
-        self.decision_table_with_weight.setColumnWidth(0, 0.25 * width)  # Name
-        self.decision_table_with_weight.setColumnWidth(1, 0.1 * width)  # C1
+        self.decision_table_with_weight.setColumnWidth(0, 0.22 * width)  # Name
+        self.decision_table_with_weight.setColumnWidth(1, 0.12 * width)  # C1
         self.decision_table_with_weight.setColumnWidth(2, 0.12 * width)  # C2
         self.decision_table_with_weight.setColumnWidth(3, 0.15 * width)  # C3
         self.decision_table_with_weight.setColumnWidth(4, 0.15 * width)  # C4
@@ -354,8 +355,8 @@ class HelpScreen(QWidget):
         self.decision_table_with_weight.setFixedHeight(160)
 
         self.decision_table.setFixedHeight(160)
-        self.decision_table.setColumnWidth(0, 0.25 * width)  # Name
-        self.decision_table.setColumnWidth(1, 0.1 * width)  # C1
+        self.decision_table.setColumnWidth(0, 0.22 * width)  # Name
+        self.decision_table.setColumnWidth(1, 0.12 * width)  # C1
         self.decision_table.setColumnWidth(2, 0.12 * width)  # C2
         self.decision_table.setColumnWidth(3, 0.15 * width)  # C3
         self.decision_table.setColumnWidth(4, 0.15 * width)  # C4

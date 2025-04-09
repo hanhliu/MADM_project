@@ -1,14 +1,25 @@
 import os
+from enum import Enum
 from typing import Dict
 
 from PySide6.QtSql import QSqlDatabase, QSqlQuery
+
+from src.core.database_local.abstract_db_manager import AbstractDatabaseManager
+from src.core.database_local.papers_db_manager import PapersDatabaseManager
+from src.core.database_local.reviewers_db_manager import ReviewersDatabaseManager
 from src.core.singleton_class import Singleton
+from src.core.utils import ItemType
 
 
 class DatabaseManager(metaclass=Singleton):
     def __init__(self):
         self.db = None
-        self.repo_dict: Dict[str, object] = {}
+        reviewers_repo = ReviewersDatabaseManager(self)
+        papers_repo = PapersDatabaseManager(self)
+        self.repo_dict: dict[int, AbstractDatabaseManager] = {
+            ItemType.REVIEWER.value: reviewers_repo,
+            ItemType.PAPER.value: papers_repo
+        }
         self.initDatabase()
 
     def initDatabase(self):
@@ -18,29 +29,42 @@ class DatabaseManager(metaclass=Singleton):
         if not self.db.open():
             raise Exception("Cannot open database")
 
-        # Kiểm tra nếu file chưa tồn tại, thì tạo bảng
-        if not os.path.exists("madm.db"):
+        if self.db.isOpen():
             self.createTables()
 
-    def addRepository(self, name: str, repo):
-        """
-        Thêm repository (đối tượng có phương thức createDatabase()) vào repo_dict
-        """
-        self.repo_dict[name] = repo
+    # mở kết nối csdl
+    def open(self) -> bool:
+        try:
+            if not self.db.isOpen():
+                self.db.open()
+            return True
+        except Exception as e:
+            print(e)
+            return False
 
+    # đóng kết nối csdl
+    def close(self) -> bool:
+        try:
+            if self.db.isOpen():
+                self.db.close()
+            return True
+        except Exception as e:
+            print(e)
+            return False
+
+    # tạo bảng
     def createTables(self):
-        """
-        Gọi createDatabase() từ từng repository để tạo bảng
-        """
-        for name, repo in self.repo_dict.items():
-            if hasattr(repo, "createDatabase") and callable(repo.createDatabase):
-                repo.createDatabase()
-            else:
-                print(f"Repository {name} is missing a callable createDatabase() method.")
+        for repo in self.repo_dict.values():
+            repo.createDatabase()
 
-    def closeDatabase(self):
-        """
-        Đóng kết nối khi không còn dùng
-        """
-        if self.db and self.db.isOpen():
-            self.db.close()
+    # thêm vào csdl
+    def addToDatabase(self, itemType, *args, **kwargs) -> int:
+        return self.repo_dict[itemType].addToDatabase(*args, **kwargs)
+
+    # xóa ra khỏi csdl
+    def removeFromDatabase(self, itemType, *args, **kwargs):
+        return self.repo_dict[itemType].removeFromDatabase(*args, **kwargs)
+
+    # lấy tất cả dữ liệu từ csdl
+    def getAllFromDatabase(self, itemType):
+        return self.repo_dict[itemType].getAllFromDatabase()

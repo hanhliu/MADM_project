@@ -10,6 +10,8 @@ from src.ui.home_screen import HomeScreen
 class MainWindow(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
+        self.screen = QApplication.primaryScreen()
+        self.screen_geometry = self.screen.availableGeometry()
         self.main_controller = MainController()
         self.load_ui()
 
@@ -27,17 +29,17 @@ class MainWindow(QMainWindow):
         self.central_widget.setLayout(self.central_layout)
         self.setCentralWidget(self.central_widget)
 
-        self.setMinimumSize(920, 700)
+    def resizeEvent(self, event):
+        # Tính toán vị trí trung tâm
+        width = int(self.screen_geometry.width()*0.7)
+        height = int(self.screen_geometry.height()*0.8)
+        self.setFixedSize(width, height)
         self.center()
 
     def center(self):
-        # Lấy màn hình hiện tại
-        screen = QApplication.primaryScreen()
-        screen_geometry = screen.availableGeometry()
-
         # Tính toán vị trí trung tâm
-        x = (screen_geometry.width() - self.width()) // 2
-        y = (screen_geometry.height() - self.height()) // 2
+        x = (self.screen_geometry.width() - self.width()) // 2
+        y = (self.screen_geometry.height() - self.height()) // 2
 
         # Đặt vị trí cửa sổ
         self.move(x, y)

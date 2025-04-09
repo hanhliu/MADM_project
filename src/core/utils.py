@@ -1,5 +1,10 @@
+from enum import Enum
+
 import numpy as np
 
+class ItemType(Enum):
+    REVIEWER = 0
+    PAPER = 1
 
 # Hàm tính Jaccard Similarity
 def jaccard_similarity(set1, set2):

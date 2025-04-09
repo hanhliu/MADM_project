@@ -22,6 +22,7 @@ class Paper:
     @classmethod
     def from_dict(cls, data):
         paper = cls()
+        paper.id = data.get("id")
         paper.topic = data.get("topic")
         paper.field = data.get("field", [])
         paper.date = data.get("date")

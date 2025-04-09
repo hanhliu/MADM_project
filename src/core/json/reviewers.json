@@ -1,134 +1,44 @@
 {
   "researchers": [
-    {
-      "name": "Nguyen Van A",
-      "field": ["Information Technology"],
-      "degree": "PhD",
-      "conference_topic": "Applications of Artificial Intelligence in Medicine",
-      "average_rating": 9.2,
-      "years_of_experience": 10,
-      "published_papers": 25,
-      "availability": [
-        "2025-05-01 to 2025-05-20",
-        "2025-07-01 to 2025-07-15"
-      ]
-    },
-    {
-      "name": "Tran Thi B",
-      "field": ["Environmental Science"],
-      "degree": "Master’s",
-      "conference_topic": "Climate Change and Sustainable Solutions",
-      "average_rating": 7.8,
-      "years_of_experience": 5,
-      "published_papers": 8,
-      "availability": [
-        "2025-06-01 to 2025-06-30",
-        "2025-08-15 to 2025-09-10"
-      ]
-    },
-    {
-      "name": "Le Van C",
-      "field": ["Physics"],
-      "degree": "PhD",
-      "conference_topic": "Nanomaterials in Energy Technology",
-      "average_rating": 8.9,
-      "years_of_experience": 10,
-      "published_papers": 20,
-      "availability": [
-        "2025-07-01 to 2025-07-25",
-        "2025-09-01 to 2025-09-30"
-      ]
-    },
-    {
-      "name": "Vo Thi K",
-      "field": ["Information Technology", "Data Science"],
-      "degree": "PhD",
-      "conference_topic": "",
-      "average_rating": 8.7,
-      "years_of_experience": 8,
-      "published_papers": 15,
-      "availability": [
-        "2025-06-01 to 2025-06-20",
-        "2025-08-01 to 2025-08-15"
-      ]
-    },
-    {
-      "name": "Bui Van L",
-      "field": ["Economics"],
-      "degree": "Master’s",
-      "conference_topic": "",
-      "average_rating": 7.9,
-      "years_of_experience": 6,
-      "published_papers": 10,
-      "availability": [
-        "2025-07-15 to 2025-08-10",
-        "2025-09-01 to 2025-09-20"
-      ]
-    },
-    {
-        "name": "Nguyen Thi M",
-        "field": ["Information Technology", "Medicine"],
-        "degree": "PhD",
-        "conference_topic": "AI in Healthcare",
-        "average_rating": 9.0,
-        "years_of_experience": 8,
-        "published_papers": 18,
-        "availability": [
-            "2025-06-01 to 2025-06-20",
-            "2025-08-15 to 2025-09-10"
-        ]
-    },
-    {
-        "name": "Tran Van N",
-        "field": ["Physics", "Engineering"],
-        "degree": "PhD",
-        "conference_topic": "Nanotechnology Applications",
-        "average_rating": 9.2,
-        "years_of_experience": 10,
-        "published_papers": 25,
-        "availability": [
-            "2025-07-15 to 2025-08-15",
-            "2025-09-01 to 2025-09-20"
-        ]
-    },
-    {
-        "name": "Le Thi P",
-        "field": ["Environmental Science"],
-        "degree": "Master’s",
-        "conference_topic": "Sustainable Development",
-        "average_rating": 7.8,
-        "years_of_experience": 6,
-        "published_papers": 12,
-        "availability": [
-            "2025-07-10 to 2025-07-25",
-            "2025-09-15 to 2025-10-05"
-        ]
-    },
-    {
-        "name": "Pham Van Q",
-        "field": ["Economics", "Statistics"],
-        "degree": "PhD",
-        "conference_topic": "Econometric Modeling",
-        "average_rating": 8.5,
-        "years_of_experience": 9,
-        "published_papers": 20,
-        "availability": [
-            "2025-08-20 to 2025-09-10",
-            "2025-10-01 to 2025-10-15"
-        ]
-    },
-    {
-        "name": "Hoang Thi R",
-        "field": ["Information Technology", "Statistics"],
-        "degree": "Master’s",
-        "conference_topic": "Data Mining Techniques",
-        "average_rating": 8.0,
-        "years_of_experience": 7,
-        "published_papers": 15,
-        "availability": [
-            "2025-06-10 to 2025-06-30",
-            "2025-09-01 to 2025-09-15"
-        ]
-    }
+    {"id": "R01", "name": "A. Turing", "field": ["AI", "Healthcare"], "degree": "PhD", "conference_topic": "Machine Learning", "average_rating": 4.9, "years_of_experience": 15, "published_papers": 20, "availability": ["2025-01-10 to 2025-01-20"]},
+    {"id": "R02", "name": "M. Curie", "field": ["Quantum Physics"], "degree": "PhD", "conference_topic": null, "average_rating": 4.7, "years_of_experience": 12, "published_papers": 18, "availability": ["2025-02-05 to 2025-02-15"]},
+    {"id": "R03", "name": "J. Smith", "field": ["Cybersecurity", "IT"], "degree": "Masters", "conference_topic": "Security", "average_rating": 4.3, "years_of_experience": 7, "published_papers": 5, "availability": ["2025-07-25 to 2025-08-05"]},
+    {"id": "R04", "name": "S. Lee", "field": ["NLP", "AI"], "degree": "PhD", "conference_topic": "NLP", "average_rating": 4.8, "years_of_experience": 10, "published_papers": 15, "availability": ["2025-05-10 to 2025-05-15"]},
+    {"id": "R05", "name": "M. Johnson", "field": ["Robotics", "Engineering"], "degree": "Masters", "conference_topic": null, "average_rating": 4.4, "years_of_experience": 8, "published_papers": 6, "availability": ["2025-06-15 to 2025-06-20"]},
+    {"id": "R06", "name": "E. Garcia", "field": ["Environmental Science"], "degree": "PhD", "conference_topic": "Climate", "average_rating": 4.6, "years_of_experience": 11, "published_papers": 12, "availability": ["2025-04-20 to 2025-04-30"]},
+    {"id": "R07", "name": "T. Wilson", "field": ["Energy", "Engineering"], "degree": "Masters", "conference_topic": null, "average_rating": 4.2, "years_of_experience": 6, "published_papers": 4, "availability": ["2025-08-10 to 2025-08-20"]},
+    {"id": "R08", "name": "R. Feynman", "field": ["Quantum Physics", "Computing"], "degree": "PhD", "conference_topic": "Quantum", "average_rating": 4.9, "years_of_experience": 20, "published_papers": 25, "availability": ["2025-02-05 to 2025-02-15"]},
+    {"id": "R09", "name": "L. Chen", "field": ["AR", "Software Development"], "degree": "Masters", "conference_topic": "AR", "average_rating": 4.5, "years_of_experience": 9, "published_papers": 7, "availability": ["2025-10-01 to 2025-10-10"]},
+    {"id": "R10", "name": "N. Patel", "field": ["Cryptography", "Security"], "degree": "PhD", "conference_topic": null, "average_rating": 4.8, "years_of_experience": 13, "published_papers": 16, "availability": ["2025-03-15 to 2025-03-25"]},
+    {"id": "R11", "name": "A. Kim", "field": ["AI", "Healthcare"], "degree": "PhD", "conference_topic": null, "average_rating": 4.6, "years_of_experience": 9, "published_papers": 8, "availability": ["2025-01-10 to 2025-01-20"]},
+    {"id": "R12", "name": "C. Ruiz", "field": ["Quantum Physics"], "degree": "Masters", "conference_topic": "Quantum", "average_rating": 4.2, "years_of_experience": 6, "published_papers": 4, "availability": ["2025-02-05 to 2025-02-15"]},
+    {"id": "R13", "name": "S. Ali", "field": ["Cryptography"], "degree": "PhD", "conference_topic": null, "average_rating": 4.9, "years_of_experience": 15, "published_papers": 20, "availability": ["2025-03-15 to 2025-03-25"]},
+    {"id": "R14", "name": "O. Hassan", "field": ["Data Science"], "degree": "Masters", "conference_topic": "Data", "average_rating": 4.3, "years_of_experience": 7, "published_papers": 5, "availability": ["2025-04-20 to 2025-04-30"]},
+    {"id": "R15", "name": "E. Brown", "field": ["NLP", "AI"], "degree": "PhD", "conference_topic": null, "average_rating": 4.7, "years_of_experience": 12, "published_papers": 10, "availability": ["2025-05-10 to 2025-05-15"]},
+    {"id": "R16", "name": "Y. Tanaka", "field": ["Robotics"], "degree": "Masters", "conference_topic": "Robotics", "average_rating": 4.5, "years_of_experience": 9, "published_papers": 7, "availability": ["2025-06-15 to 2025-06-20"]},
+    {"id": "R17", "name": "J. Carter", "field": ["Cybersecurity"], "degree": "PhD", "conference_topic": "Security", "average_rating": 4.7, "years_of_experience": 11, "published_papers": 14, "availability": ["2025-07-25 to 2025-08-05"]},
+    {"id": "R18", "name": "P. Sharma", "field": ["Energy"], "degree": "Masters", "conference_topic": null, "average_rating": 4.4, "years_of_experience": 8, "published_papers": 6, "availability": ["2025-08-10 to 2025-08-20"]},
+    {"id": "R19", "name": "L. Mendes", "field": ["AI", "Mathematics"], "degree": "PhD", "conference_topic": "AI", "average_rating": 4.9, "years_of_experience": 16, "published_papers": 18, "availability": ["2025-09-20 to 2025-09-25"]},
+    {"id": "R20", "name": "H. Klein", "field": ["AR"], "degree": "Masters", "conference_topic": null, "average_rating": 4.6, "years_of_experience": 10, "published_papers": 8, "availability": ["2025-10-01 to 2025-10-10"]},
+    {"id": "R21", "name": "K. Nguyen", "field": ["AI", "Healthcare"], "degree": "PhD", "conference_topic": null, "average_rating": 4.8, "years_of_experience": 14, "published_papers": 15, "availability": ["2025-01-10 to 2025-01-20"]},
+    {"id": "R22", "name": "B. Lee", "field": ["Computing"], "degree": "Masters", "conference_topic": null, "average_rating": 4.1, "years_of_experience": 5, "published_papers": 3, "availability": ["2025-02-05 to 2025-02-15"]},
+    {"id": "R23", "name": "D. Patel", "field": ["Security"], "degree": "PhD", "conference_topic": "Security", "average_rating": 4.9, "years_of_experience": 17, "published_papers": 22, "availability": ["2025-03-15 to 2025-03-25"]},
+    {"id": "R24", "name": "R. Kim", "field": ["Environmental Science"], "degree": "Masters", "conference_topic": null, "average_rating": 4.3, "years_of_experience": 7, "published_papers": 5, "availability": ["2025-04-20 to 2025-04-30"]},
+    {"id": "R25", "name": "T. Ho", "field": ["NLP"], "degree": "PhD", "conference_topic": "NLP", "average_rating": 4.9, "years_of_experience": 13, "published_papers": 16, "availability": ["2025-05-10 to 2025-05-15"]},
+    {"id": "R26", "name": "P. Tran", "field": ["Engineering"], "degree": "Masters", "conference_topic": null, "average_rating": 4.5, "years_of_experience": 9, "published_papers": 7, "availability": ["2025-06-15 to 2025-06-20"]},
+    {"id": "R27", "name": "H. Pham", "field": ["IT"], "degree": "PhD", "conference_topic": null, "average_rating": 4.6, "years_of_experience": 12, "published_papers": 10, "availability": ["2025-07-25 to 2025-08-05"]},
+    {"id": "R28", "name": "L. Vu", "field": ["Energy"], "degree": "Masters", "conference_topic": "Energy", "average_rating": 4.2, "years_of_experience": 6, "published_papers": 4, "availability": ["2025-08-10 to 2025-08-20"]},
+    {"id": "R29", "name": "M. Ngo", "field": ["Mathematics"], "degree": "PhD", "conference_topic": null, "average_rating": 4.9, "years_of_experience": 18, "published_papers": 20, "availability": ["2025-09-20 to 2025-09-25"]},
+    {"id": "R30", "name": "N. Le", "field": ["Software Development"], "degree": "Masters", "conference_topic": "Software", "average_rating": 4.4, "years_of_experience": 8, "published_papers": 6, "availability": ["2025-10-01 to 2025-10-10"]},
+    {"id": "R31", "name": "J. Park", "field": ["AI"], "degree": "PhD", "conference_topic": null, "average_rating": 4.7, "years_of_experience": 11, "published_papers": 12, "availability": ["2025-01-10 to 2025-01-20"]},
+    {"id": "R32", "name": "S. Choi", "field": ["Quantum Physics"], "degree": "Masters", "conference_topic": null, "average_rating": 4.0, "years_of_experience": 5, "published_papers": 3, "availability": ["2025-02-05 to 2025-02-15"]},
+    {"id": "R33", "name": "K. Lim", "field": ["Cryptography"], "degree": "PhD", "conference_topic": "Crypto", "average_rating": 4.8, "years_of_experience": 14, "published_papers": 15, "availability": ["2025-03-15 to 2025-03-25"]},
+    {"id": "R34", "name": "H. Tan", "field": ["Data Science"], "degree": "Masters", "conference_topic": null, "average_rating": 4.4, "years_of_experience": 8, "published_papers": 6, "availability": ["2025-04-20 to 2025-04-30"]},
+    {"id": "R35", "name": "A. Wong", "field": ["AI"], "degree": "PhD", "conference_topic": "AI", "average_rating": 4.9, "years_of_experience": 16, "published_papers": 18, "availability": ["2025-09-20 to 2025-09-25"]},
+    {"id": "R36", "name": "B. Chan", "field": ["Robotics"], "degree": "Masters", "conference_topic": null, "average_rating": 4.3, "years_of_experience": 7, "published_papers": 5, "availability": ["2025-06-15 to 2025-06-20"]},
+    {"id": "R37", "name": "C. Li", "field": ["Cybersecurity"], "degree": "PhD", "conference_topic": null, "average_rating": 4.8, "years_of_experience": 13, "published_papers": 15, "availability": ["2025-07-25 to 2025-08-05"]},
+    {"id": "R38", "name": "D. Wu", "field": ["Engineering"], "degree": "Masters", "conference_topic": "Engineering", "average_rating": 4.1, "years_of_experience": 6, "published_papers": 4, "availability": ["2025-08-10 to 2025-08-20"]},
+    {"id": "R39", "name": "E. Xu", "field": ["Mathematics"], "degree": "PhD", "conference_topic": "Math", "average_rating": 4.9, "years_of_experience": 17, "published_papers": 20, "availability": ["2025-09-20 to 2025-09-25"]},
+    {"id": "R40", "name": "F. Yang", "field": ["AR"], "degree": "Masters", "conference_topic": null, "average_rating": 4.5, "years_of_experience": 9, "published_papers": 7, "availability": ["2025-10-01 to 2025-10-10"]}
   ]
 }

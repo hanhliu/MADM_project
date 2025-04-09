@@ -1,48 +1,125 @@
 {
   "conferences": [
+
     {
-      "topic": "Applications of Artificial Intelligence in Medicine",
-      "field": ["Information Technology", "Medicine"],
-      "date": "2025-06-15",
+      "id": "P001",
+      "topic": "Machine Learning in Healthcare",
+      "field": ["AI", "Healthcare"],
+      "date": "2025-01-15",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 8.5,
+      "required_reviewer_rating": 4.5,
       "min_reviewers": 3,
-      "authors": ["Nguyen Van A", "Pham Thi D", "Hoang Van E"],
-      "numbers_of_published_papers_requirement": 10,
-      "years_of_experience_requirement": 4
+      "authors": ["John Doe", "Jane Smith"],
+      "numbers_of_published_papers_requirement": 5,
+      "years_of_experience_requirement": 8
     },
     {
-      "topic": "Climate Change and Sustainable Solutions",
-      "field": ["Environmental Science"],
-      "date": "2025-07-20",
-      "reviewer_degree_requirement": "Master’s",
-      "required_reviewer_rating": 7.0,
+      "id": "P002",
+      "topic": "Quantum Computing Advances",
+      "field": ["Quantum Physics", "Computing"],
+      "date": "2025-02-10",
+      "reviewer_degree_requirement": "Masters",
+      "required_reviewer_rating": 4.0,
       "min_reviewers": 2,
-      "authors": ["Tran Thi B", "Le Van F"],
-      "numbers_of_published_papers_requirement": 10,
-      "years_of_experience_requirement": 4
+      "authors": ["Alice Brown"],
+      "numbers_of_published_papers_requirement": 3,
+      "years_of_experience_requirement": 5
     },
     {
-      "topic": "Nanomaterials in Energy Technology",
-      "field": ["Physics", "Engineering"],
-      "date": "2025-08-10",
+      "id": "P003",
+      "topic": "Blockchain Security",
+      "field": ["Cryptography", "Security"],
+      "date": "2025-03-20",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 9.0,
-      "min_reviewers": 3,
-      "authors": ["Le Van C", "Nguyen Thi G"],
+      "required_reviewer_rating": 4.8,
+      "min_reviewers": 4,
+      "authors": ["Bob Wilson", "Emma Lee"],
       "numbers_of_published_papers_requirement": 10,
-      "years_of_experience_requirement": 4
+      "years_of_experience_requirement": 10
     },
     {
-      "topic": "Big Data Analysis in Economics",
-      "field": ["Economics", "Statistics"],
-      "date": "2025-09-05",
-      "reviewer_degree_requirement": "Master’s",
-      "required_reviewer_rating": 7.5,
+      "id": "P004",
+      "topic": "Climate Change Modeling",
+      "field": ["Environmental Science", "Data Science"],
+      "date": "2025-04-25",
+      "reviewer_degree_requirement": "Masters",
+      "required_reviewer_rating": 4.2,
       "min_reviewers": 2,
-      "authors": ["Pham Van H", "Tran Thi I"],
-      "numbers_of_published_papers_requirement": 10,
-      "years_of_experience_requirement": 4
+      "authors": ["Clara Green"],
+      "numbers_of_published_papers_requirement": 4,
+      "years_of_experience_requirement": 6
+    },
+    {
+      "id": "P005",
+      "topic": "Natural Language Processing",
+      "field": ["NLP", "AI"],
+      "date": "2025-05-12",
+      "reviewer_degree_requirement": "PhD",
+      "required_reviewer_rating": 4.7,
+      "min_reviewers": 3,
+      "authors": ["David Kim", "Sarah Park"],
+      "numbers_of_published_papers_requirement": 7,
+      "years_of_experience_requirement": 9
+    },
+    {
+      "id": "P006",
+      "topic": "Robotics in Manufacturing",
+      "field": ["Robotics", "Engineering"],
+      "date": "2025-06-18",
+      "reviewer_degree_requirement": "Masters",
+      "required_reviewer_rating": 4.3,
+      "min_reviewers": 2,
+      "authors": ["Mike Chen"],
+      "numbers_of_published_papers_requirement": 5,
+      "years_of_experience_requirement": 7
+    },
+    {
+      "id": "P007",
+      "topic": "Cybersecurity Trends",
+      "field": ["Cybersecurity", "IT"],
+      "date": "2025-07-30",
+      "reviewer_degree_requirement": "PhD",
+      "required_reviewer_rating": 4.6,
+      "min_reviewers": 3,
+      "authors": ["Laura Adams", "Tom Baker"],
+      "numbers_of_published_papers_requirement": 8,
+      "years_of_experience_requirement": 10
+    },
+    {
+      "id": "P008",
+      "topic": "Renewable Energy Systems",
+      "field": ["Energy", "Engineering"],
+      "date": "2025-08-15",
+      "reviewer_degree_requirement": "Masters",
+      "required_reviewer_rating": 4.1,
+      "min_reviewers": 2,
+      "authors": ["Emily White"],
+      "numbers_of_published_papers_requirement": 3,
+      "years_of_experience_requirement": 5
+    },
+    {
+      "id": "P009",
+      "topic": "Graph Neural Networks",
+      "field": ["AI", "Mathematics"],
+      "date": "2025-09-22",
+      "reviewer_degree_requirement": "PhD",
+      "required_reviewer_rating": 4.9,
+      "min_reviewers": 4,
+      "authors": ["Peter Zhang", "Lily Xu"],
+      "numbers_of_published_papers_requirement": 12,
+      "years_of_experience_requirement": 15
+    },
+    {
+      "id": "P010",
+      "topic": "Augmented Reality Applications",
+      "field": ["AR", "Software Development"],
+      "date": "2025-10-05",
+      "reviewer_degree_requirement": "Masters",
+      "required_reviewer_rating": 4.4,
+      "min_reviewers": 2,
+      "authors": ["Rachel Moore"],
+      "numbers_of_published_papers_requirement": 6,
+      "years_of_experience_requirement": 8
     }
   ]
 }

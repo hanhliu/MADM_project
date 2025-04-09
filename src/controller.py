@@ -3,14 +3,19 @@ from datetime import datetime
 
 import numpy as np
 
+from src.core.database_local.database_manager import DatabaseManager
 from src.core.models.paper_model import Paper
 from src.core.models.reviewer_model import Reviewer
-from src.core.utils import jaccard_similarity, normalize_decision_matrix, normalize_and_weight_matrix
+from src.core.utils import jaccard_similarity, normalize_decision_matrix, normalize_and_weight_matrix, ItemType
 
 
 class MainController:
     def __init__(self):
         super().__init__()
+        # Tạo instance Singleton
+        self.db_manager = DatabaseManager()
+        self.papers = []
+        self.reviewers = []
         self.distances = {}
         self.topsis_scores = {}
         self.topsis_ranking = None
@@ -19,6 +24,10 @@ class MainController:
         self.weighted_matrix = None
         self.papers = self.load_papers_from_json()
         self.reviewers = self.load_reviewers_from_json()
+        # self.load_and_save_reviewer_to_db()
+        # self.load_and_save_paper_to_db()
+        self.papers = self.db_manager.getAllFromDatabase(ItemType.PAPER.value)
+        self.reviewers = self.db_manager.getAllFromDatabase(ItemType.REVIEWER.value)
         self.weights = [0.3, 0.1, 0.2, 0.1, 0.1]
 
     def calculate_decision_matrix(self, list_reviewer=None, paper=None):
@@ -51,7 +60,7 @@ class MainController:
                 c4_published,
                 c5_experience
             ])
-        print(f"HanhLT: decision_matrix = {decision_matrix}")
+        print(f"HanhLT: decision_matrix in controller = {decision_matrix}")
         return decision_matrix
 
     def calcute_decision_matrix_with_weights(self, decision_matrix, weights):
@@ -193,6 +202,7 @@ class MainController:
         """Loại theo ràng buộc về nguyên tắc đồng tác giả, thời gian rảnh và lĩnh vực nghiên cứu"""
         filtered_reviewers = []
         for reviewer in self.reviewers:
+            print(f"HanhLT: self.is_available(reviewer, topic.date) = {self.is_available(reviewer, topic.date)}")
             if (reviewer.name not in topic.authors and self.is_available(reviewer, topic.date)
                     and any(field in topic.field for field in reviewer.field)):
                 filtered_reviewers.append(reviewer)
@@ -209,3 +219,15 @@ class MainController:
         required_level = degree_order.get(required_degree, 0)
 
         return reviewer_level >= required_level
+
+    def load_and_save_paper_to_db(self):
+        self.papers = self.load_papers_from_json()
+
+        for paper in self.papers:
+            self.db_manager.addToDatabase(ItemType.PAPER.value, paper)
+
+    def load_and_save_reviewer_to_db(self):
+        self.reviewers = self.load_reviewers_from_json()
+
+        for reviewer in self.reviewers:
+            self.db_manager.addToDatabase(ItemType.REVIEWER.value, reviewer)

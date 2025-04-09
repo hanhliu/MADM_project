@@ -4,6 +4,7 @@ from typing import List, Dict
 
 @dataclass
 class Reviewer:
+    id: str = None
     name: str = None
     field: List[str] = None
     degree: str = None
