@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.screen_geometry = self.screen.availableGeometry()
         self.main_controller = MainController()
         self.load_ui()
+        self.setup_stylesheet()
 
     def load_ui(self):
         self.central_widget = QWidget()
@@ -28,6 +29,33 @@ class MainWindow(QMainWindow):
         self.central_layout.addWidget(self.tabs)
         self.central_widget.setLayout(self.central_layout)
         self.setCentralWidget(self.central_widget)
+
+    def setup_stylesheet(self):
+        self.tabs.setStyleSheet("""
+            QTabWidget::pane {
+                border: 1px solid #ccc;
+                background: #f9f9f9;
+                top: -1px;
+            }
+        
+            QTabBar::tab {
+                background: #e0e0e0;
+                border: 1px solid #ccc;
+                border-bottom-color: #f9f9f9;
+                padding: 8px 20px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                margin-right: 2px;
+            }
+        
+            QTabBar::tab:selected {
+                background: #7E0A0A;
+                color: #ffffff;
+                border-color: #ccc;
+                border-bottom-color: #ffffff;
+            }
+        """)
+
 
     def resizeEvent(self, event):
         # Tính toán vị trí trung tâm

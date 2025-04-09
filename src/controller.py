@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 import numpy as np
@@ -24,10 +25,13 @@ class MainController:
         self.weighted_matrix = None
         self.papers = self.load_papers_from_json()
         self.reviewers = self.load_reviewers_from_json()
-        self.load_and_save_reviewer_to_db()
-        self.load_and_save_paper_to_db()
-        # self.papers = self.db_manager.getAllFromDatabase(ItemType.PAPER.value)
-        # self.reviewers = self.db_manager.getAllFromDatabase(ItemType.REVIEWER.value)
+        if os.path.exists("madm.db"):
+            self.papers = self.db_manager.getAllFromDatabase(ItemType.PAPER.value)
+            self.reviewers = self.db_manager.getAllFromDatabase(ItemType.REVIEWER.value)
+        else:
+            self.load_and_save_reviewer_to_db()
+            self.load_and_save_paper_to_db()
+
         self.weights = [0.3, 0.1, 0.2, 0.1, 0.1]
 
     def calculate_decision_matrix(self, list_reviewer=None, paper=None):

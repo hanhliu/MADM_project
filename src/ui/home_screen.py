@@ -10,6 +10,7 @@ class HomeScreen(QWidget):
         self.reviewers = reviewers
         self.load_ui_list()
         self.load_ui()
+        self.setup_stylesheet()
 
     def load_ui(self):
         # create layout
@@ -83,6 +84,36 @@ class HomeScreen(QWidget):
         self.table_reviewer.setColumnWidth(3, 0.2 * width)  # Availability
         self.table_reviewer.setColumnWidth(4, 0.25 * width)  # Conference topic
         self.table_reviewer.setColumnWidth(5, 0.07 * width)  # Average Rating
+
+    def setup_stylesheet(self):
+        self.setStyleSheet("""
+            QTableWidget {
+                gridline-color: #dcdcdc;
+                background-color: #ffffff;
+                border: 1px solid #cfcfcf;
+                font-size: 14px;
+                selection-background-color: #cce7ff;
+                selection-color: black;
+                alternate-background-color: #f6f6f6;
+            }
+
+            QHeaderView::section {
+                background-color: #f0f0f0;
+                color: #333;
+                padding: 4px;
+                border: 1px solid #dcdcdc;
+                font-weight: bold;
+            }
+
+            QTableWidget::item {
+                padding: 4px;
+            }
+
+            QTableCornerButton::section {
+                background-color: #f0f0f0;
+                border: 1px solid #dcdcdc;
+            }
+        """)
 
     def resizeEvent(self, event):
         self.setup_table_width(self.width())

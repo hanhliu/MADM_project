@@ -3,7 +3,7 @@ from functools import partial
 
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, \
-    QPushButton, QMenu, QTableWidget, QTableWidgetItem
+    QPushButton, QMenu, QTableWidget, QTableWidgetItem, QDialog, QLineEdit
 from src.controller import MainController
 from PySide6.QtGui import QAction, QFont
 
@@ -13,6 +13,7 @@ from src.core.models.paper_model import Paper
 class HelpScreen(QWidget):
     def __init__(self, parent=None, controller: MainController = None):
         super().__init__(parent)
+        self.current_paper = None
         self.negative_ideal_solution = []
         self.ideal_solution = []
         self.controller = controller
@@ -24,6 +25,7 @@ class HelpScreen(QWidget):
         self.create_menu()
         self.load_ui_help()
         self.load_ui()
+
 
     def ui_criteria(self):
         """Tiêu chí đánh giá:
@@ -48,6 +50,7 @@ class HelpScreen(QWidget):
         label_5 = QLabel("C5. Có nhiều năm nghiên cứu - dùng trực tiếp")
         label_6 = QLabel("R6. Sẵn sàng thời gian - ràng buộc")
         label_7 = QLabel("R7. Không trùng tác giả -  ràng buộc")
+        label_8 = QLabel("R8. Có ít nhất 1 lĩnh vực nghiên cứu thuộc bài báo")
         label_1.setFont(font)
         label_2.setFont(font)
         label_3.setFont(font)
@@ -55,14 +58,17 @@ class HelpScreen(QWidget):
         label_5.setFont(font)
         label_6.setFont(font)
         label_7.setFont(font)
+        label_8.setFont(font)
         layout_1.addWidget(label_tc)
         layout_1.addWidget(label_1)
         layout_1.addWidget(label_2)
         layout_1.addWidget(label_3)
-        layout_2.addWidget(label_4)
-        layout_2.addWidget(label_5)
+        layout_1.addWidget(label_4)
+        layout_1.addWidget(label_5)
+        layout_2.addWidget(QLabel("RÀNG BUỘC"))
         layout_2.addWidget(label_6)
         layout_2.addWidget(label_7)
+        layout_2.addWidget(label_8)
         self.layout_criteria.addLayout(layout_1)
         self.layout_criteria.addLayout(layout_2)
 
@@ -72,15 +78,26 @@ class HelpScreen(QWidget):
         self.table_weights.setRowCount(1)
         self.table_weights.setColumnCount(6)  # Columns: "W1", "W2", "W3", "W4", "W5"
         self.table_weights.setHorizontalHeaderLabels(["", "W1", "W2", "W3", "W4", "W5"])
+        self.table_weights.resizeColumnsToContents()
+        self.table_weights.resizeRowsToContents()
         # Đặt dữ liệu vào hàng đầu tiên
         self.table_weights.setItem(0, 0, QTableWidgetItem("Trọng số"))
         for col, weight in enumerate(self.controller.weights, start=1):  # Bắt đầu từ cột 1
             self.table_weights.setItem(0, col, QTableWidgetItem(str(weight)))
+
+        self.table_weights.setColumnWidth(0, 100)  # Name
+        self.table_weights.setColumnWidth(1, 60)  # Field
+        self.table_weights.setColumnWidth(2, 60)  # Degree
+        self.table_weights.setColumnWidth(3, 60)  # Availability
+        self.table_weights.setColumnWidth(4, 60)  # Conference topic
+        self.table_weights.setColumnWidth(5, 60)  # Average Rating
+        self.table_weights.setFixedWidth(500)
         push_button = QPushButton("Sửa bộ trọng số")
+        push_button.setFixedWidth(100)
         push_button.setStyleSheet(f'''
-            QPushButton{{
-                background-color: lightblue;
-                color: black;
+             QPushButton{{
+                background-color: #7E0A0A;
+                color: white;
                 border-radius: 2px;
                 padding: 4px 4px 4px 4px;
             }}
@@ -88,9 +105,24 @@ class HelpScreen(QWidget):
 
         push_button.clicked.connect(self.edit_weights_click)
 
+        push_button_2 = QPushButton("Cập nhật ma trận")
+        push_button_2.setFixedWidth(100)
+        push_button_2.setStyleSheet(f'''
+                     QPushButton{{
+                        background-color: #4C9008;
+                        color: white;
+                        border-radius: 2px;
+                        padding: 4px 4px 4px 4px;
+                    }}
+                ''')
+
+        push_button_2.clicked.connect(self.update_table_new_weights)
+
         layout_temp = QHBoxLayout()
-        layout_temp.addWidget(self.table_weights, 9)
+        layout_temp.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        layout_temp.addWidget(self.table_weights, 8)
         layout_temp.addWidget(push_button, 1)
+        layout_temp.addWidget(push_button_2, 1)
 
         self.layout_weight = QVBoxLayout()
         self.layout_weight.setSpacing(2)
@@ -98,6 +130,7 @@ class HelpScreen(QWidget):
         self.layout_weight.addLayout(layout_temp)
 
     def load_ui(self):
+
         # create layout
         self.main_layout = QVBoxLayout()
         self.main_layout.setAlignment(Qt.AlignmentFlag.AlignTop)
@@ -122,19 +155,10 @@ class HelpScreen(QWidget):
         layout.addLayout(self.layout_criteria, 1)
         widget.setLayout(layout)
         widget.setObjectName("temp")
-        self.setStyleSheet(f'''
-            QWidget#temp{{
-                border: 1px solid gray
-            }}
-            QWidget#widget_top{{
-                border: 1px solid gray
-            }}
-        ''')
-
         self.main_layout.addWidget(widget_top, 10)
         self.main_layout.addWidget(widget, 1)
         self.setLayout(self.main_layout)
-
+        self.setup_stylesheet()
     def load_ui_help(self):
         label_choose_topic = QLabel("Trợ giúp tìm người phản biện đề tài: ")
         self.combobox_topic = QPushButton("Chọn đề tài")
@@ -190,9 +214,9 @@ class HelpScreen(QWidget):
         self.topsis_layout = QHBoxLayout()
         push_button = QPushButton("TOPSIS")
         push_button.setStyleSheet(f'''
-            QPushButton{{
-                background-color: lightblue;
-                color: black;
+             QPushButton{{
+                background-color: #7E0A0A;
+                color: white;
                 border-radius: 2px;
                 padding: 4px 4px 4px 4px;
             }}
@@ -240,7 +264,6 @@ class HelpScreen(QWidget):
         self.topsis_layout.addLayout(layout_solution, 3)
         self.topsis_layout.addWidget(self.table_target, 3)
         self.topsis_layout.addWidget(self.table_rank, 3)
-
 
     def create_decision_table(self):
         self.decision_table = QTableWidget(self)
@@ -294,6 +317,7 @@ class HelpScreen(QWidget):
         self.table_rank.setHorizontalHeaderLabels(["Name", "C", "RANK"])
 
     def calculate_and_update_table(self, data: Paper):
+        self.current_paper = data
         list_reviewers = self.controller.filter_researchers(data)
         decision_matrix = self.controller.calculate_decision_matrix(list_reviewer=list_reviewers, paper=data)
         self.decision_table.setRowCount(len(decision_matrix))  # Make sure row count matches number of reviewers
@@ -340,7 +364,70 @@ class HelpScreen(QWidget):
 
     def edit_weights_click(self):
         print("show dialog")
-        pass
+        # show dialog
+        self.dialog = QDialog()
+        self.dialog.setWindowTitle("Sửa bộ trọng số")
+        self.dialog.setModal(True)
+        self.dialog.setFixedSize(440, 160)
+        dialog_layout = QVBoxLayout()
+        self.dialog.setLayout(dialog_layout)
+        label = QLabel("Nhập bộ trọng số mới:")
+        self.table_new_weights = QTableWidget()
+        self.table_new_weights.setRowCount(1)
+        self.table_new_weights.setColumnCount(6)  # Columns: "W1", "W2", "W3", "W4", "W5"
+        self.table_new_weights.setHorizontalHeaderLabels(["", "W1", "W2", "W3", "W4", "W5"])
+        # Đặt dữ liệu vào hàng đầu tiên
+        self.table_new_weights.setItem(0, 0, QTableWidgetItem("Trọng số"))
+        for col, weight in enumerate(self.controller.weights, start=1):  # Bắt đầu từ cột 1
+            self.table_new_weights.setItem(0, col, QTableWidgetItem(str(weight)))
+        self.table_new_weights.setColumnWidth(0, 100)  # Name
+        self.table_new_weights.setColumnWidth(1, 60)  # Field
+        self.table_new_weights.setColumnWidth(2, 60)  # Degree
+        self.table_new_weights.setColumnWidth(3, 60)  # Availability
+        self.table_new_weights.setColumnWidth(4, 60)  # Conference topic
+        self.table_new_weights.setColumnWidth(5, 60)  # Average Rating
+
+        dialog_layout.addWidget(label)
+        dialog_layout.addWidget(self.table_new_weights)
+        button_ok = QPushButton("OK")
+        button_ok.setStyleSheet(f'''
+            QPushButton{{
+                background-color: #7E0A0A;
+                color: white;
+                border-radius: 2px;
+                padding: 4px 4px 4px 4px;
+            }}
+        ''')
+        button_ok.clicked.connect(self.update_weights)
+        button_ok.setFixedWidth(100)
+        dialog_layout.addWidget(button_ok)
+        self.dialog.setLayout(dialog_layout)
+        self.dialog.exec()
+
+    def update_weights(self):
+        # get value from table
+        float_list = []
+        for col in range(1, 6):  # Bắt đầu từ cột 1
+            item = self.table_new_weights.item(0, col)
+            if item is not None:
+                text = item.text()
+                try:
+                    value = float(text)
+                    float_list.append(value)
+                except ValueError:
+                    print(f"Giá trị không hợp lệ ở cột {col}: {text}")
+                    return
+
+        # Cập nhật bộ trọng số
+        self.controller.weights.clear()
+        self.controller.weights = float_list
+        for col, weight in enumerate(self.controller.weights, start=1):  # Bắt đầu từ cột 1
+            self.table_weights.setItem(0, col, QTableWidgetItem(str(weight)))
+        self.dialog.close()
+
+    def update_table_new_weights(self):
+        self.calculate_and_update_table(self.current_paper)
+        self.topsis_clicked()
 
     def resize_table(self, width):
         self.decision_table_with_weight.setColumnWidth(0, 0.22 * width)  # Name
@@ -369,3 +456,40 @@ class HelpScreen(QWidget):
 
     def resizeEvent(self, event):
         self.resize_table(self.width()/2)
+
+    def setup_stylesheet(self):
+        self.setStyleSheet("""
+            QTableWidget {
+                gridline-color: #dcdcdc;
+                background-color: #ffffff;
+                border: 1px solid #cfcfcf;
+                font-size: 14px;
+                selection-background-color: #cce7ff;
+                selection-color: black;
+                alternate-background-color: #f6f6f6;
+            }
+
+            QHeaderView::section {
+                background-color: #f0f0f0;
+                color: #333;
+                padding: 4px;
+                border: 1px solid #dcdcdc;
+                font-weight: bold;
+            }
+
+            QTableWidget::item {
+                padding: 4px;
+            }
+
+            QTableCornerButton::section {
+                background-color: #f0f0f0;
+                border: 1px solid #dcdcdc;
+            }
+            
+            QWidget#temp{
+                        border: 1px solid gray
+                    }
+            QWidget#widget_top{
+                border: 1px solid gray
+            }
+        """)
