@@ -1,17 +1,12 @@
 {
   "conferences": [
-
     {
       "id": "P001",
       "topic": "Machine Learning in Healthcare",
       "field": ["AI", "Healthcare"],
       "date": "2025-01-15",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 4.5,
-      "min_reviewers": 3,
-      "authors": ["John Doe", "Jane Smith"],
-      "numbers_of_published_papers_requirement": 5,
-      "years_of_experience_requirement": 8
+      "authors": ["John Doe", "Jane Smith"]
     },
     {
       "id": "P002",
@@ -19,11 +14,7 @@
       "field": ["Quantum Physics", "Computing"],
       "date": "2025-02-10",
       "reviewer_degree_requirement": "Masters",
-      "required_reviewer_rating": 4.0,
-      "min_reviewers": 2,
-      "authors": ["Alice Brown"],
-      "numbers_of_published_papers_requirement": 3,
-      "years_of_experience_requirement": 5
+      "authors": ["Alice Brown"]
     },
     {
       "id": "P003",
@@ -31,11 +22,7 @@
       "field": ["Cryptography", "Security"],
       "date": "2025-03-20",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 4.8,
-      "min_reviewers": 4,
-      "authors": ["Bob Wilson", "Emma Lee"],
-      "numbers_of_published_papers_requirement": 10,
-      "years_of_experience_requirement": 10
+      "authors": ["Bob Wilson", "Emma Lee"]
     },
     {
       "id": "P004",
@@ -43,11 +30,7 @@
       "field": ["Environmental Science", "Data Science"],
       "date": "2025-04-25",
       "reviewer_degree_requirement": "Masters",
-      "required_reviewer_rating": 4.2,
-      "min_reviewers": 2,
-      "authors": ["Clara Green"],
-      "numbers_of_published_papers_requirement": 4,
-      "years_of_experience_requirement": 6
+      "authors": ["Clara Green"]
     },
     {
       "id": "P005",
@@ -55,11 +38,7 @@
       "field": ["NLP", "AI"],
       "date": "2025-05-12",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 4.7,
-      "min_reviewers": 3,
-      "authors": ["David Kim", "Sarah Park"],
-      "numbers_of_published_papers_requirement": 7,
-      "years_of_experience_requirement": 9
+      "authors": ["David Kim", "Sarah Park"]
     },
     {
       "id": "P006",
@@ -67,11 +46,7 @@
       "field": ["Robotics", "Engineering"],
       "date": "2025-06-18",
       "reviewer_degree_requirement": "Masters",
-      "required_reviewer_rating": 4.3,
-      "min_reviewers": 2,
-      "authors": ["Mike Chen"],
-      "numbers_of_published_papers_requirement": 5,
-      "years_of_experience_requirement": 7
+      "authors": ["Mike Chen"]
     },
     {
       "id": "P007",
@@ -79,11 +54,7 @@
       "field": ["Cybersecurity", "IT"],
       "date": "2025-07-30",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 4.6,
-      "min_reviewers": 3,
-      "authors": ["Laura Adams", "Tom Baker"],
-      "numbers_of_published_papers_requirement": 8,
-      "years_of_experience_requirement": 10
+      "authors": ["Laura Adams", "Tom Baker"]
     },
     {
       "id": "P008",
@@ -91,11 +62,7 @@
       "field": ["Energy", "Engineering"],
       "date": "2025-08-15",
       "reviewer_degree_requirement": "Masters",
-      "required_reviewer_rating": 4.1,
-      "min_reviewers": 2,
-      "authors": ["Emily White"],
-      "numbers_of_published_papers_requirement": 3,
-      "years_of_experience_requirement": 5
+      "authors": ["Emily White"]
     },
     {
       "id": "P009",
@@ -103,11 +70,7 @@
       "field": ["AI", "Mathematics"],
       "date": "2025-09-22",
       "reviewer_degree_requirement": "PhD",
-      "required_reviewer_rating": 4.9,
-      "min_reviewers": 4,
-      "authors": ["Peter Zhang", "Lily Xu"],
-      "numbers_of_published_papers_requirement": 12,
-      "years_of_experience_requirement": 15
+      "authors": ["Peter Zhang", "Lily Xu"]
     },
     {
       "id": "P010",
@@ -115,11 +78,7 @@
       "field": ["AR", "Software Development"],
       "date": "2025-10-05",
       "reviewer_degree_requirement": "Masters",
-      "required_reviewer_rating": 4.4,
-      "min_reviewers": 2,
-      "authors": ["Rachel Moore"],
-      "numbers_of_published_papers_requirement": 6,
-      "years_of_experience_requirement": 8
+      "authors": ["Rachel Moore"]
     }
   ]
 }

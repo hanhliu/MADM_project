@@ -23,11 +23,7 @@ class PapersDatabaseManager(AbstractDatabaseManager):
                 field TEXT NOT NULL,
                 date TEXT NOT NULL,
                 reviewer_degree_requirement TEXT,
-                required_reviewer_rating REAL,
-                min_reviewers INTEGER,
-                authors TEXT NOT NULL,
-                numbers_of_published_papers_requirement INTEGER,
-                years_of_experience_requirement INTEGER
+                authors TEXT NOT NULL
             )
             """
         ):
@@ -64,9 +60,8 @@ class PapersDatabaseManager(AbstractDatabaseManager):
             """
             INSERT INTO papers (
                 id, topic, field, date, reviewer_degree_requirement,
-                required_reviewer_rating, min_reviewers, authors,
-                numbers_of_published_papers_requirement, years_of_experience_requirement
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                authors
+            ) VALUES (?, ?, ?, ?, ?, ?)
             """
         )
 
@@ -75,11 +70,7 @@ class PapersDatabaseManager(AbstractDatabaseManager):
         query.addBindValue(json.dumps(paper_data.field))  # Có thể serialize JSON nếu là list
         query.addBindValue(paper_data.date)
         query.addBindValue(paper_data.reviewer_degree_requirement)
-        query.addBindValue(paper_data.required_reviewer_rating)
-        query.addBindValue(paper_data.min_reviewers)
         query.addBindValue(json.dumps(paper_data.authors))  # Có thể là JSON list
-        query.addBindValue(paper_data.numbers_of_published_papers_requirement)
-        query.addBindValue(paper_data.years_of_experience_requirement)
 
         if query.exec():
             print(f"✅ Thêm Paper: '{paper_data.topic}' thành công")
@@ -106,11 +97,7 @@ class PapersDatabaseManager(AbstractDatabaseManager):
                 field=json.loads(query.value(2)),  # field dạng List[str]
                 date=query.value(3),
                 reviewer_degree_requirement=query.value(4),
-                required_reviewer_rating=query.value(5),
-                min_reviewers=query.value(6),
-                authors=json.loads(query.value(7)),  # authors dạng List[str]
-                numbers_of_published_papers_requirement=query.value(8),
-                years_of_experience_requirement=query.value(9)
+                authors=json.loads(query.value(5))  # authors dạng List[str]
             ))
 
         self.db_manager.close()

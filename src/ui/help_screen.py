@@ -276,7 +276,6 @@ class HelpScreen(QWidget):
             self.menu.addAction(action)
 
     def combo_box_change(self, data: Paper):
-        print(f"HanhLT: data name ={data.topic}")
         self.label_name_topic.setText(data.topic)
         self.label_field_name.setText(", ".join(data.field))
         self.label_author_name.setText(", ".join(data.authors))
@@ -296,9 +295,7 @@ class HelpScreen(QWidget):
 
     def calculate_and_update_table(self, data: Paper):
         list_reviewers = self.controller.filter_researchers(data)
-        print(f"HanhLT: list_reviewers = {list_reviewers}")
         decision_matrix = self.controller.calculate_decision_matrix(list_reviewer=list_reviewers, paper=data)
-        print(f"HanhLT: result = {decision_matrix}")
         self.decision_table.setRowCount(len(decision_matrix))  # Make sure row count matches number of reviewers
 
         for row_index, (name, criteria) in enumerate(decision_matrix.items()):

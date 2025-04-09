@@ -24,10 +24,10 @@ class MainController:
         self.weighted_matrix = None
         self.papers = self.load_papers_from_json()
         self.reviewers = self.load_reviewers_from_json()
-        # self.load_and_save_reviewer_to_db()
-        # self.load_and_save_paper_to_db()
-        self.papers = self.db_manager.getAllFromDatabase(ItemType.PAPER.value)
-        self.reviewers = self.db_manager.getAllFromDatabase(ItemType.REVIEWER.value)
+        self.load_and_save_reviewer_to_db()
+        self.load_and_save_paper_to_db()
+        # self.papers = self.db_manager.getAllFromDatabase(ItemType.PAPER.value)
+        # self.reviewers = self.db_manager.getAllFromDatabase(ItemType.REVIEWER.value)
         self.weights = [0.3, 0.1, 0.2, 0.1, 0.1]
 
     def calculate_decision_matrix(self, list_reviewer=None, paper=None):
@@ -60,7 +60,6 @@ class MainController:
                 c4_published,
                 c5_experience
             ])
-        print(f"HanhLT: decision_matrix in controller = {decision_matrix}")
         return decision_matrix
 
     def calcute_decision_matrix_with_weights(self, decision_matrix, weights):
@@ -79,7 +78,6 @@ class MainController:
             for i in range(len(reviewers))
         }
 
-        print("HanhLT: weighted_matrix =", self.weighted_matrix)
         return self.weighted_matrix
 
     def calculate_ideal_solutions(self):
@@ -99,9 +97,6 @@ class MainController:
         # Làm tròn
         self.ideal_solution = [round(x, 4) for x in ideal_solution]
         self.negative_ideal_solution = [round(x, 4) for x in negative_ideal_solution]
-
-        print(f"HanhLT: A+ (Ideal) = {self.ideal_solution}")
-        print(f"HanhLT: A- (Negative Ideal) = {self.negative_ideal_solution}")
 
         return self.ideal_solution, self.negative_ideal_solution
 
@@ -129,8 +124,6 @@ class MainController:
             }
             for i in range(len(reviewers))
         }
-
-        print(f"HanhLT: Distances = {self.distances}")
         return self.distances
 
     def calculate_topsis_scores(self):
@@ -145,7 +138,6 @@ class MainController:
         for name, dist in self.distances.items():
             s_plus = dist['S+']
             s_minus = dist['S-']
-            print(f"s_minus = {s_minus}   s_plus={s_plus}")
             if s_plus + s_minus == 0:
                 score = 0
             else:
@@ -154,32 +146,7 @@ class MainController:
 
         # Sắp xếp theo điểm C giảm dần
         self.topsis_ranking = sorted(self.topsis_scores.items(), key=lambda x: x[1], reverse=True)
-
-        print(f"HanhLT: TOPSIS Scores = {self.topsis_scores}")
-        print(f"HanhLT: Ranking = {self.topsis_ranking}")
         return self.topsis_scores, self.topsis_ranking
-
-    def load_papers_from_json(self):
-        try:
-            with open("src/core/json/papers.json", "r", encoding="utf-8") as file:
-                data = json.load(file)
-            # Convert JSON data to Paper objects
-            papers = [Paper.from_dict(paper) for paper in data["conferences"]]
-            return papers
-        except FileNotFoundError:
-            print("Không tìm thấy file papers.json")
-            return []
-        except json.JSONDecodeError:
-            print("Lỗi định dạng JSON trong file papers.json")
-            return []
-
-    def load_reviewers_from_json(self):
-        with open("src/core/json/reviewers.json", "r", encoding="utf-8") as file:
-            data = json.load(file)
-
-        # Convert JSON data to Paper objects
-        reviewers = [Reviewer.from_dict(paper) for paper in data["researchers"]]
-        return reviewers
 
     # Hàm kiểm tra tính khả dụng
     def is_available(self, researcher, event_date):
@@ -202,7 +169,6 @@ class MainController:
         """Loại theo ràng buộc về nguyên tắc đồng tác giả, thời gian rảnh và lĩnh vực nghiên cứu"""
         filtered_reviewers = []
         for reviewer in self.reviewers:
-            print(f"HanhLT: self.is_available(reviewer, topic.date) = {self.is_available(reviewer, topic.date)}")
             if (reviewer.name not in topic.authors and self.is_available(reviewer, topic.date)
                     and any(field in topic.field for field in reviewer.field)):
                 filtered_reviewers.append(reviewer)
@@ -220,14 +186,39 @@ class MainController:
 
         return reviewer_level >= required_level
 
+    # ADD DATA TO DATABASE
     def load_and_save_paper_to_db(self):
         self.papers = self.load_papers_from_json()
 
         for paper in self.papers:
             self.db_manager.addToDatabase(ItemType.PAPER.value, paper)
+            pass
 
     def load_and_save_reviewer_to_db(self):
         self.reviewers = self.load_reviewers_from_json()
 
         for reviewer in self.reviewers:
             self.db_manager.addToDatabase(ItemType.REVIEWER.value, reviewer)
+            pass
+
+    def load_papers_from_json(self):
+        try:
+            with open("src/core/json/papers.json", "r", encoding="utf-8") as file:
+                data = json.load(file)
+            # Convert JSON data to Paper objects
+            papers = [Paper.from_dict(paper) for paper in data["conferences"]]
+            return papers
+        except FileNotFoundError:
+            print("Không tìm thấy file papers.json")
+            return []
+        except json.JSONDecodeError:
+            print("Lỗi định dạng JSON trong file papers.json")
+            return []
+
+    def load_reviewers_from_json(self):
+        with open("src/core/json/reviewers.json", "r", encoding="utf-8") as file:
+            data = json.load(file)
+
+        # Convert JSON data to Paper objects
+        reviewers = [Reviewer.from_dict(paper) for paper in data["researchers"]]
+        return reviewers
