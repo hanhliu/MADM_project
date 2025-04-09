@@ -5,6 +5,7 @@ from datetime import date
 
 @dataclass
 class Paper:
+    id: str = None
     topic: str = None
     field: List[str] = None
     date: date = None
