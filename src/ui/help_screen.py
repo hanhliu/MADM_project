@@ -39,7 +39,7 @@ class HelpScreen(QWidget):
                     7. Không trùng tác giả -  ràng buộc"""
         self.layout_criteria = QHBoxLayout()
         font = QFont()
-        font.setPointSize(9)
+        font.setPointSize(11)
         layout_1 = QVBoxLayout()
         layout_2 = QVBoxLayout()
         label_tc = QLabel("TIÊU CHÍ ĐÁNH GIÁ")
@@ -93,7 +93,7 @@ class HelpScreen(QWidget):
         self.table_weights.setColumnWidth(5, 60)  # Average Rating
         self.table_weights.setFixedWidth(500)
         push_button = QPushButton("Sửa bộ trọng số")
-        push_button.setFixedWidth(100)
+        push_button.setFixedWidth(120)
         push_button.setStyleSheet(f'''
              QPushButton{{
                 background-color: #7E0A0A;
@@ -106,7 +106,7 @@ class HelpScreen(QWidget):
         push_button.clicked.connect(self.edit_weights_click)
 
         push_button_2 = QPushButton("Cập nhật ma trận")
-        push_button_2.setFixedWidth(100)
+        push_button_2.setFixedWidth(120)
         push_button_2.setStyleSheet(f'''
                      QPushButton{{
                         background-color: #4C9008;
@@ -119,6 +119,7 @@ class HelpScreen(QWidget):
         push_button_2.clicked.connect(self.update_table_new_weights)
 
         layout_temp = QHBoxLayout()
+        layout_temp.setSpacing(10)
         layout_temp.setAlignment(Qt.AlignmentFlag.AlignLeft)
         layout_temp.addWidget(self.table_weights, 8)
         layout_temp.addWidget(push_button, 1)
@@ -368,7 +369,7 @@ class HelpScreen(QWidget):
         self.dialog = QDialog()
         self.dialog.setWindowTitle("Sửa bộ trọng số")
         self.dialog.setModal(True)
-        self.dialog.setFixedSize(440, 160)
+        self.dialog.setFixedSize(440, 200)
         dialog_layout = QVBoxLayout()
         self.dialog.setLayout(dialog_layout)
         label = QLabel("Nhập bộ trọng số mới:")
