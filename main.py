@@ -3,6 +3,7 @@ import sys
 from PySide6.QtWidgets import QWidget, QMainWindow, QApplication, QVBoxLayout, QTabWidget
 
 from src.controller import MainController
+from src.ui.add_data_screen import AddDataScreen
 from src.ui.help_screen import HelpScreen
 from src.ui.home_screen import HomeScreen
 
@@ -20,11 +21,13 @@ class MainWindow(QMainWindow):
         self.central_widget = QWidget()
         self.central_layout = QVBoxLayout()
 
-        home_screen = HomeScreen(papers=self.main_controller.papers, reviewers=self.main_controller.reviewers)
+        home_screen = HomeScreen(controller=self.main_controller, papers=self.main_controller.papers, reviewers=self.main_controller.reviewers)
         help_screen = HelpScreen(controller=self.main_controller)
+        add_data_screen = AddDataScreen(controller=self.main_controller)  # Placeholder for AddDataScreen
         self.tabs = QTabWidget()
         self.tabs.addTab(home_screen, "Thông tin")
         self.tabs.addTab(help_screen, "Trợ giúp")
+        self.tabs.addTab(add_data_screen, "Thêm dữ liệu")
 
         self.central_layout.addWidget(self.tabs)
         self.central_widget.setLayout(self.central_layout)

@@ -76,6 +76,7 @@ class ReviewersDatabaseManager(AbstractDatabaseManager):
         query.addBindValue(reviewer.average_rating)
         query.addBindValue(reviewer.years_of_experience)
         query.addBindValue(reviewer.published_papers)
+
         query.addBindValue(json.dumps(reviewer.availability))
 
         if query.exec():

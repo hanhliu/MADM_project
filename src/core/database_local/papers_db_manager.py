@@ -68,7 +68,8 @@ class PapersDatabaseManager(AbstractDatabaseManager):
         query.addBindValue(paper_data.id)
         query.addBindValue(paper_data.topic)
         query.addBindValue(json.dumps(paper_data.field))  # Có thể serialize JSON nếu là list
-        query.addBindValue(paper_data.date)
+        str_date = paper_data.date.strftime("%Y-%m-%d")
+        query.addBindValue(str_date)
         query.addBindValue(paper_data.reviewer_degree_requirement)
         query.addBindValue(json.dumps(paper_data.authors))  # Có thể là JSON list
 

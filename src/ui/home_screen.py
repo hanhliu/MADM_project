@@ -2,10 +2,14 @@
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QTableWidget, QTableWidgetItem, QLabel
 
+from src.controller import MainController
+
 
 class HomeScreen(QWidget):
-    def __init__(self, parent=None, papers=None, reviewers=None):
+    def __init__(self, parent=None, papers=None, reviewers=None, controller:MainController=None):
         super().__init__(parent)
+        self.main_controller = controller
+        self.main_controller.signal_change_data.connect(self.refresh_data_and_ui)
         self.papers = papers
         self.reviewers = reviewers
         self.load_ui_list()
@@ -40,6 +44,7 @@ class HomeScreen(QWidget):
         # Populate table
         self.table_topic.setRowCount(len(self.papers))
         for row, paper in enumerate(self.papers):
+            print(f"{paper.topic} - {paper.field} - {paper.date} - {paper.authors}")
             self.table_topic.setItem(row, 0, QTableWidgetItem(paper.topic))
             self.table_topic.setItem(row, 1, QTableWidgetItem(", ".join(paper.field)))
             self.table_topic.setItem(row, 2, QTableWidgetItem(paper.date))
@@ -71,7 +76,32 @@ class HomeScreen(QWidget):
         self.top_layout = QVBoxLayout()
         self.top_layout.addWidget(self.table_topic_widget)
         self.top_layout.addWidget(self.table_reviewer_widget)
-    
+
+    def refresh_data_and_ui(self, data):
+        self.papers, self.reviewers = data
+
+        # 2. Cập nhật lại bảng đề tài
+        self.table_topic.setRowCount(len(self.papers))
+        for row, paper in enumerate(self.papers):
+            print(f"{paper.topic} - {paper.field} - {paper.date} - {paper.authors}")
+            self.table_topic.setItem(row, 0, QTableWidgetItem(paper.topic))
+            self.table_topic.setItem(row, 1, QTableWidgetItem(", ".join(paper.field)))
+            self.table_topic.setItem(row, 2, QTableWidgetItem(paper.date))
+            self.table_topic.setItem(row, 3, QTableWidgetItem(", ".join(paper.authors)))
+        self.table_topic.resizeRowsToContents()
+
+        # 3. Cập nhật lại bảng reviewer
+        self.table_reviewer.setRowCount(len(self.reviewers))
+        for row, reviewer in enumerate(self.reviewers):
+            print(f"{reviewer.name} - {reviewer.field} - {reviewer.degree} - {reviewer.availability} - {reviewer.conference_topic} - {reviewer.average_rating}")
+            self.table_reviewer.setItem(row, 0, QTableWidgetItem(reviewer.name))
+            self.table_reviewer.setItem(row, 1, QTableWidgetItem(", ".join(reviewer.field)))
+            self.table_reviewer.setItem(row, 2, QTableWidgetItem(reviewer.degree))
+            self.table_reviewer.setItem(row, 3, QTableWidgetItem(", ".join(reviewer.availability)))
+            self.table_reviewer.setItem(row, 4, QTableWidgetItem(reviewer.conference_topic))
+            self.table_reviewer.setItem(row, 5, QTableWidgetItem(str(reviewer.average_rating)))
+        self.table_reviewer.resizeRowsToContents()
+
     def setup_table_width(self, width):
         self.table_topic.setColumnWidth(0, 0.3 * width)  # Topic
         self.table_topic.setColumnWidth(1, 0.2 * width)  # Field
